@@ -1,4 +1,3 @@
-const { findByIdAndDelete } = require('../models/artesania');
 const Artesania = require('../models/artesania')
 
 const artesaniaGet = async (req, res) => {
@@ -9,16 +8,11 @@ const artesaniaGet = async (req, res) => {
 const artesaniaPost = async (req, res) => {
 
     const { categoria, nombre, precio, img, stock ,descripcion} = req.body;
-    // const stock = 5; 
     const nuevaArtesania = new Artesania({categoria,nombre,precio,img,stock,descripcion});
     await nuevaArtesania.save()
 
     res.json({ nuevaArtesania });
 }
-
-// const artesaniaGetBySKU = (req, res) => {
-//     res.json({ msg: "get by SKU artesania controller" });
-// }
 
 const artesaniaPut = async (req, res) => {
     const { id } = req.params;
