@@ -1,6 +1,6 @@
-const { Schema, model } = require('mongoose')
+const mongoose = require('mongoose');
 
-const artesaniaSchema = Schema({
+const artesaniaSchema = mongoose.Schema({
     categoria: {
         type: String,
         required: [true, '**** Db: La categoria es requerida']
@@ -15,7 +15,8 @@ const artesaniaSchema = Schema({
         required: [true, '**** Db: El precio es requerido']
     },
     img: {
-        type: String
+        type: String,
+        default: ''
     },
     stock: {
         type: Number,
@@ -27,7 +28,11 @@ const artesaniaSchema = Schema({
     },
     descripcion:{
         type: String
-    }
+    },
+    comentarios:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'comentario'
+    }]
 });
 
 // artesaniaSchema.methods.toJSON = function(){
@@ -36,4 +41,4 @@ const artesaniaSchema = Schema({
 //     return user;
 // }
 
-module.exports = model('Artesania', artesaniaSchema);
+module.exports = mongoose.model('Artesania', artesaniaSchema);
