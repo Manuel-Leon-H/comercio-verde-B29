@@ -9,6 +9,7 @@ class Server {
         this.app = express();
         this.port = 3000;
         this.artesaniaPath = '/api/artesanias';
+        this.alimentosPath = '/api/alimentos';
 
         this.initDB();
         this.middlewares();
@@ -28,6 +29,7 @@ class Server {
 
     routes(){
         this.app.use(this.artesaniaPath, require('../routes/artesanias'));
+        this.app.use(this.alimentosPath, require('../routes/alimentosFrescos'));
     }
 
     listen(){

@@ -1,8 +1,16 @@
 const Artesania = require('../models/artesania')
 
 const artesaniaGet = async (req, res) => {
-    const artesanias = await Artesania.find({categoria: 'artesania'})
+    const artesanias = await Artesania.find({categoria: 'Artesania'})
     res.json(artesanias);
+}
+
+const artesaniaGetByid = async (req, res) => {
+    const { id } = req.params;
+
+    const artesaniaF = await Artesania.findById(id)
+
+    res.json( artesaniaF );
 }
 
 const artesaniaPost = async (req, res) => {
@@ -30,13 +38,7 @@ const artesaniaDelete = async (req, res) => {
     res.json({ "mensaje":"producto eliminado",productoEliminado });
 }
 
-const artesaniaGetByid = async (req, res) => {
-    const { id } = req.params;
 
-    const artesaniaF = await Artesania.findById(id)
-
-    res.json( artesaniaF );
-}
 
 module.exports = {
     artesaniaGet,
