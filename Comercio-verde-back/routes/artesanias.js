@@ -1,8 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { categoriaExist,
-        ArtesaniaByIdExists
+const { ArtesaniaByIdExists
  } = require('../helpers/validaciones')
  const { validateDate } =require('../middlewares/validacionerrores')
 
