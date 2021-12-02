@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const dbConnection = async () =>{
-    await mongoose.connect('mongodb://localhost:27017/ComercioVerde')
+    await mongoose.connect(process.env.MONGOURL)
         .then(() => console.log("Connect mongoDB ready"))
         .catch(err => {
             console.log(`Error connect mongoDB: ${ err }`);
